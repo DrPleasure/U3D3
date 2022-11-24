@@ -38,8 +38,12 @@ class SingleBook extends Component {
           <MyBadge color="warning" currency="£" text={this.props.book.price} />
         </Card.Body>
         <Card.Footer></Card.Footer>
+        {selectedBook && (
+          <div>
+            <CommentArea asin={this.props.book.asin} />
+          </div>
+        )}
         <div>
-          <CommentArea asin={this.props.book.asin} />
           <AddComment asin={this.props.book.asin} />
         </div>
       </Card>

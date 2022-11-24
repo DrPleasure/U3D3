@@ -30,12 +30,14 @@ class CommentArea extends Component {
     this.fetchComments();
   }
   render() {
-    console.log(this.props.bookId);
+    console.log(this.props.asin);
     return (
       <div>
         <ListGroup>
           {this.state.comments.map((element, i) => (
-            <ListGroup.Item key={i}>{element.comment}</ListGroup.Item>
+            <ListGroup.Item key={i}>
+              {element.comment} {element.rate}
+            </ListGroup.Item>
           ))}
         </ListGroup>
       </div>
