@@ -1,15 +1,50 @@
+import { Component } from "react";
 import Card from "react-bootstrap/Card";
+import MyBadge from "./MyBadge";
+import CommentArea from "./CommentArea";
+import AddComment from "./AddComment";
 
-const SingleBook = ({ book }) => {
-  return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={book.img} />
-      <Card.Body>
-        <Card.Title>{book.title}</Card.Title>
-        <Card.Text>This book is a {book.category} book.</Card.Text>
-      </Card.Body>
-    </Card>
-  );
-};
+class SingleBook extends Component {
+  state = {
+    selectedBook: false,
+  };
+
+  toggleBook = () => {
+    this.setState((prevState) => ({ selectedBook: !prevState.selectedBook }));
+  };
+
+  render() {
+    const { selectedBook } = this.state;
+    return (
+      <Card
+        onClick={this.toggleBook}
+        className={`${
+          selectedBook
+            ? "card-border mb-3 mt-2 card-hover card-grow"
+            : "mb-3 mt-2 card-hover"
+        }`}
+        bg="secondary"
+        text="light"
+        style={{ height: "60rem" }}
+      >
+        <Card.Img
+          variant="top"
+          src={this.props.book.img}
+          key={this.props.book.asin}
+          className="imgTop"
+        />
+        <Card.Body>
+          <Card.Header>{this.props.book.title}</Card.Header>
+          <MyBadge color="warning" currency="£" text={this.props.book.price} />
+        </Card.Body>
+        <Card.Footer></Card.Footer>
+        <div>
+          <CommentArea asin={this.props.book.asin} />
+          <AddComment asin={this.props.book.asin} />
+        </div>
+      </Card>
+    );
+  }
+}
 
 export default SingleBook;

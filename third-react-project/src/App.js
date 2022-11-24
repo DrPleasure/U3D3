@@ -3,10 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 import WarningSign from "./components/WarningSign";
 import MyBadge from "./components/MyBadge";
-import SingleBook from "./components/SingleBook";
+// import SingleBook from "./components/SingleBook";
 import BookList from "./components/BookList";
 import fantasy from "./data/ListOfBooks/fantasy.json";
-import ToggleOnClick from "./components/ToggleOnClick";
+// import ToggleOnClick from "./components/ToggleOnClick";
+
 console.log(fantasy);
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
         price="19.92"
         category="Fantasy"
       /> */}
+      {/* <CommentArea /> */}
       <BookList ListOfBooks={fantasy} />
-      <ToggleOnClick />
     </div>
   );
 }
